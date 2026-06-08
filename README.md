@@ -8,7 +8,8 @@ The bot does not ban the tokengrabbed user, nor can it prevent any contact withi
 - Fill your app token within TOKEN variable
 - Run `python tokengrab-automod.py`
 - If you want to keep control of the console, add `&` at the end of the command to run bot on background
-- If you want to save logs, add `>> tokengrab-automod.log` at the end of the command to save all output to tokengrab-automod.log
+- If you want the bot to persist even after logging out of terminal, use this command instead : `nohup python tokengrab-automod.py &` 
+- If you want to save logs, add `>> tokengrab-automod.log` at the end of the command to save all output to tokengrab-automod.log in the current folder.
 
 # Scope
 
