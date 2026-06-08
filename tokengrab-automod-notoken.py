@@ -31,14 +31,14 @@ async def on_ready():
     print('------')
     
 def is_image_attachment(attachment: discord.Attachment) -> bool:
-    # 1. Vérification MIME
+    # 1 - checks MIMEtype
     if (
         attachment.content_type is not None
         and attachment.content_type.startswith("image/")
     ):
         return True
 
-    # 2. Repli sur l'extension
+    # 2 - If badly set MIMEtype, falls back on file extension
     extension = Path(attachment.filename).suffix.lower()
     return extension in IMAGE_EXTENSIONS
 
@@ -52,18 +52,18 @@ async def on_message(message):
         1 for attachment in message.attachments
         if is_image_attachment(attachment)
     )
-
+  # image count is always four. Of coursee, this can be edited if bots decide to adapt, or adopt a new posting pattern, who knows
     if image_count == 4:
         try:
             await message.delete()
         except discord.Forbidden:
             print(
-                f"Impossible de supprimer le message "
-                f"{message.id} : permissions insuffisantes."
+                f"Cannot delete message !"
+                f"{message.id} : insufficient permission."
             )
         except discord.HTTPException as exc:
             print(
-                f"Erreur Discord lors de la suppression "
+                f"Discord error thrown while attempting to delete message :"
                 f"du message {message.id} : {exc}"
             )
 
