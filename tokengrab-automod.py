@@ -64,7 +64,7 @@ async def on_message(message):
         except discord.HTTPException as exc:
             print(
                 f"Discord error thrown while attempting to delete message :"
-                f"du message {message.id} : {exc}"
+                f"{message.id} : {exc}"
             )
 
     await bot.process_commands(message)
